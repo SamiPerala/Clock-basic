@@ -1,0 +1,15 @@
+[{
+    "livePreview.defaultPreviewPath": "/clock.html"
+}
+,
+{
+  
+
+  "configurations": 
+    {
+      
+      "outputCapture": "std", // or "console" 
+    }
+  
+
+  }]
