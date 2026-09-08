@@ -56,7 +56,7 @@ main {
 .hand {
   background-color: var(--dark-orange);
   transform-origin: bottom center;
-
+  transform: rotate(90deg);
   
 }
 .hour-hand {
@@ -83,7 +83,21 @@ main {
   height: 190px;
   border-radius: 5px;
   left: 50%;
-
+  transform: rotate(90deg);
 }
 
+.hour-number {
+  color: var(--light-grey);
+  font-size: 2rem;
+  
+}
 
+.number-container {
+  position: absolute;
+  top: -18px;
+  right: -15px;
+}
+
+.clock-face-numbers-container {
+  position: absolute;
+}
