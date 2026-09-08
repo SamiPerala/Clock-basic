@@ -86,4 +86,14 @@ main {
 
 }
 
+.hour-number {
+  color: var(--light-grey);
+  font-size: 2rem;
+  transform:  translate(0%, -450%) rotate(-90deg);
+}
 
+.number-container {
+  position: absolute;
+  transform: rotate(90deg);
+  border: solid 2px red;
+}
