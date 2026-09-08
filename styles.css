@@ -56,7 +56,7 @@ main {
 .hand {
   background-color: var(--dark-orange);
   transform-origin: bottom center;
-
+  transform: rotate(90deg);
   
 }
 .hour-hand {

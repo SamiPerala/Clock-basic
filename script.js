@@ -8,17 +8,22 @@ const secondHand = document.querySelector('.second-hand');
 
 console.log(test);
 
-function updateClock() {
+function setTime() {
     const hour = new Date().getHours();
     const minute = new Date().getMinutes();
     const second = new Date().getSeconds();
 
-    console.log(minute)
-    hourHand.style.transform = `rotate(${hour*15}deg)`;
+    console.log(hour)
+    hourHand.style.transform = `rotate(${hour*30}deg)`;
     minuteHand.style.transform = `rotate(${minute*6}deg)`;
     secondHand.style.transform = `rotate(${second*6}deg)`;
     
     
+}
+
+
+function updateClock() {
+    setInterval(setTime, 1000)
 }
 
 updateClock();
