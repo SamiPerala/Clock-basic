@@ -83,17 +83,21 @@ main {
   height: 190px;
   border-radius: 5px;
   left: 50%;
-
+  transform: rotate(90deg);
 }
 
 .hour-number {
   color: var(--light-grey);
   font-size: 2rem;
-  transform:  translate(0%, -450%) rotate(-90deg);
+  
 }
 
 .number-container {
   position: absolute;
-  transform: rotate(90deg);
-  border: solid 2px red;
+  top: -18px;
+  right: -15px;
+}
+
+.clock-face-numbers-container {
+  position: absolute;
 }
