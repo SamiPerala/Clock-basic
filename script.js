@@ -1,10 +1,22 @@
+//mab-clock-tick-1-20080713.wav by mab -- https://freesound.org/s/57211/ -- License: Attribution 3.0
+//Bedside clock alarm.wav by Chelly01 -- https://freesound.org/s/541077/ -- License: Creative Commons 0
+
+
 const hourHand = document.querySelector('.hour-hand');
 const minuteHand = document.querySelector('.minute-hand');
 const secondHand = document.querySelector('.second-hand');
 const clockNumberContainer = document.querySelector('.clock-face-numbers-container');
 
+const alarmBtn = document.getElementById("alarm-btn");
+const alarmHour = document.getElementById("alarm-hour");
+const alarmMinute = document.getElementById("alarm-minute");
+
+
 let hasDrawnHours = false;
 
+function setAlarm() {
+    
+}
 
 
 function setTime() {
@@ -27,7 +39,6 @@ function setTime() {
     hourHand.style.transform = `rotate(${hour*30}deg)`;
     minuteHand.style.transform = `rotate(${minute*6}deg)`;
     secondHand.style.transform = `rotate(${second*6}deg)`;
-    console.log(secondHand)
 }
 
 
