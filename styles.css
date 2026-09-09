@@ -33,8 +33,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: center;
   margin: auto;
+  flex-wrap: wrap;
   min-width: 400px;
   width: 400px;
   height: 400px;
@@ -60,12 +60,13 @@ main {
   background-color: var(--dark-orange);
   transform-origin: center bottom;
   transform: rotate(90deg);
+  height: 190px;
+
   
 }
 .hour-hand {
   position: absolute;
   width: 6px;
-  height: 190px;
   border-radius: 5px;
   left: 50%;
 
@@ -74,7 +75,6 @@ main {
 .minute-hand {
   position: absolute;
   width: 3px;
-  height: 190px;
   border-radius: 5px;
   left: 50%;
 
@@ -83,7 +83,6 @@ main {
 .second-hand {
   position: absolute;
   width: 2px;
-  height: 190px;
   border-radius: 5px;
   left: 50%;
   transform: rotate(90deg);
@@ -127,4 +126,42 @@ main {
   background-color: #1a7fd8;
   font-weight: bold;
   color: var(--white)
+}
+
+@media (max-width: 432px) {
+  .clock-container {
+    width: 220px;
+    min-width: 240px;
+    min-height: 240px;
+    height: 220px;
+  }
+  .clock-face {
+    width: 220px;
+    height: 220px;
+    padding: 8px;
+  }
+  .hand {
+    height: 100px;
+  }
+  .hour-number {
+    color: var(--light-grey);
+    font-size: 1.25rem;0
+  }
+  .number-container {
+    width: 100px;
+    height: 12px;
+    top: -9px;
+    right: -89px;
+    padding: 5px;
+    }
+    .clock-face-numbers-container {
+    position: absolute;
+  }
+}
+  
+
+@media (min-width: 769px) {
+  .alarm {
+    flex-direction: row;
+  }
 }

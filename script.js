@@ -8,16 +8,17 @@ const secondHand = document.querySelector('.second-hand');
 const clockNumberContainer = document.querySelector('.clock-face-numbers-container');
 
 const alarmBtn = document.getElementById("alarm-btn");
+const tikSoundToggle = document.getElementById("tik-toggle");
 const alarmHour = document.getElementById("alarm-hour");
 const alarmMinute = document.getElementById("alarm-minute");
-
+const alarmSound = new Audio("./alarm.wav");
+let tikSound = new Audio();
 
 let hasDrawnHours = false;
 
-function setAlarm() {
-    
+async function playAlarm() {
+    return await alarmSound.play();
 }
-
 
 function setTime() {
     let numberRot = 30;
@@ -39,11 +40,30 @@ function setTime() {
     hourHand.style.transform = `rotate(${hour*30}deg)`;
     minuteHand.style.transform = `rotate(${minute*6}deg)`;
     secondHand.style.transform = `rotate(${second*6}deg)`;
+    tikSound?.play();
+    console.log(hour, Number(alarmHour.value))
+    if(hour === Number(alarmHour.value)&& minute === Number(alarmMinute.value)) {
+        playAlarm()
+    }
 }
-
 
 function updateClock() {
     setInterval(setTime, 1000)
 }
 
 updateClock();
+
+alarmBtn.addEventListener("click", () => {
+    const alarmHour = document.getElementById("alarm-hour");
+    const alarmMinute = document.getElementById("alarm-minute");
+    console.log(alarmHour.value, alarmMinute.value)
+})
+
+tikSoundToggle.addEventListener("change", (e) => {
+    console.log("got here")
+    if(!e.target.checked) {
+        tikSound = null;
+    } else if (e.target.checked) {
+        tikSound = new Audio("./57211__mab__mab-clock-tick-1-20080713.wav")
+    } 
+})
