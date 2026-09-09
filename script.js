@@ -6,8 +6,11 @@ const hourHand = document.querySelector('.hour-hand');
 const minuteHand = document.querySelector('.minute-hand');
 const secondHand = document.querySelector('.second-hand');
 const clockNumberContainer = document.querySelector('.clock-face-numbers-container');
+const alarmList = document.getElementById("alarm-list");
 
-const alarmBtn = document.getElementById("alarm-btn");
+const setAlarmBtn = document.getElementById("set-alarm-btn");
+const clearAlarmBtn = document.getElementById("clear-alarm-btn");
+
 const tikSoundToggle = document.getElementById("tik-toggle");
 const alarmHour = document.getElementById("alarm-hour");
 const alarmMinute = document.getElementById("alarm-minute");
@@ -15,14 +18,15 @@ const alarmSound = new Audio("./alarm.wav");
 let tikSound = new Audio();
 
 let hasDrawnHours = false;
+let index = localStorage.length;
 
 async function playAlarm() {
     return await alarmSound.play();
 }
-
 function setTime() {
     let numberRot = 30;
     if(!hasDrawnHours) {
+        listAlarms()
         for (let i = 1; i <= 12; i++) {
       clockNumberContainer.innerHTML += `
         <div class="number-container" style="transform: rotate(${numberRot}deg);">
@@ -41,23 +45,42 @@ function setTime() {
     minuteHand.style.transform = `rotate(${minute*6}deg)`;
     secondHand.style.transform = `rotate(${second*6}deg)`;
     tikSound?.play();
-    console.log(hour, Number(alarmHour.value))
     if(hour === Number(alarmHour.value)&& minute === Number(alarmMinute.value)) {
         playAlarm()
     }
 }
 
+
+
 function updateClock() {
     setInterval(setTime, 1000)
 }
 
+function listAlarms() {
+    alarmList.innerHTML = "";
+    for(let i = 0; i < localStorage.length; i++) {
+        alarmList.innerHTML += `
+        <p class="alarm">${JSON.parse(localStorage.getItem(`alarm-${i}`))}</p>`
+    }
+    console.log(JSON.parse(localStorage.getItem('alarm-1')))
+    
+}
+
 updateClock();
 
-alarmBtn.addEventListener("click", () => {
+setAlarmBtn.addEventListener("click", () => {
     const alarmHour = document.getElementById("alarm-hour");
     const alarmMinute = document.getElementById("alarm-minute");
-    console.log(alarmHour.value, alarmMinute.value)
+    localStorage.setItem('alarm-' + index, JSON.stringify([alarmHour.value, alarmMinute.value]))
+    index += 1;
+    listAlarms()
 })
+
+clearAlarmBtn.addEventListener("click", () => {
+    localStorage.clear()
+    index = 0;
+    listAlarms()
+} )
 
 tikSoundToggle.addEventListener("change", (e) => {
     console.log("got here")

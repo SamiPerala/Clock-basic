@@ -118,7 +118,7 @@ main {
   width: 35px;
 }
 
-#alarm-btn {
+.alarm-btn {
   margin: 5px auto;
   width: 75px;
   height: 32px;
@@ -150,8 +150,8 @@ main {
   .number-container {
     width: 100px;
     height: 12px;
-    top: -9px;
-    right: -89px;
+    top: -5px;
+    right: -90px;
     padding: 5px;
     }
     .clock-face-numbers-container {
