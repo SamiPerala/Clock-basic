@@ -127,6 +127,21 @@ main {
   font-weight: bold;
   color: var(--white)
 }
+.remove-alarm-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #d81a23;
+  font-weight: bold;
+  color: var(--white)
+}
+.alarm-list {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
 
 @media (max-width: 432px) {
   .clock-container {
