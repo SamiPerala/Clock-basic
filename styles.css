@@ -33,6 +33,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto;
+  flex-wrap: wrap;
+  min-width: 400px;
   width: 400px;
   height: 400px;
   border-radius: 50%;
@@ -48,21 +51,22 @@ body {
 }
 
 main {
-  display: flex;
+  /*display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;*/
 }
 
 .hand {
   background-color: var(--dark-orange);
-  transform-origin: bottom center;
+  transform-origin: center bottom;
   transform: rotate(90deg);
+  height: 190px;
+
   
 }
 .hour-hand {
   position: absolute;
   width: 6px;
-  height: 190px;
   border-radius: 5px;
   left: 50%;
 
@@ -71,7 +75,6 @@ main {
 .minute-hand {
   position: absolute;
   width: 3px;
-  height: 190px;
   border-radius: 5px;
   left: 50%;
 
@@ -80,7 +83,6 @@ main {
 .second-hand {
   position: absolute;
   width: 2px;
-  height: 190px;
   border-radius: 5px;
   left: 50%;
   transform: rotate(90deg);
@@ -95,9 +97,86 @@ main {
 .number-container {
   position: absolute;
   top: -18px;
-  right: -15px;
+  right: -12px;
 }
 
 .clock-face-numbers-container {
   position: absolute;
+}
+
+.alarm {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 120px;
+  font-size: 1rem;
+  color: var(--light-grey)
+}
+
+.alarm input{
+  width: 35px;
+}
+
+.alarm-btn {
+  margin: 5px auto;
+  width: 75px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: #1a7fd8;
+  font-weight: bold;
+  color: var(--white)
+}
+.remove-alarm-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #d81a23;
+  font-weight: bold;
+  color: var(--white)
+}
+.alarm-list {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
+
+@media (max-width: 432px) {
+  .clock-container {
+    width: 220px;
+    min-width: 240px;
+    min-height: 240px;
+    height: 220px;
+  }
+  .clock-face {
+    width: 220px;
+    height: 220px;
+    padding: 8px;
+  }
+  .hand {
+    height: 100px;
+  }
+  .hour-number {
+    color: var(--light-grey);
+    font-size: 1.25rem;0
+  }
+  .number-container {
+    width: 100px;
+    height: 12px;
+    top: -6px;
+    right: -90px;
+    padding: 5px;
+    }
+    .clock-face-numbers-container {
+    position: absolute;
+  }
+}
+  
+
+@media (min-width: 769px) {
+  .alarm {
+    flex-direction: row;
+  }
 }
