@@ -27,6 +27,10 @@ async function playAlarm() {
 }
 function setTime() {
     let numberRot = 30;
+    const hour = new Date().getHours();
+    const minute = new Date().getMinutes();
+    const second = new Date().getSeconds();
+    let arrayOfAlarms = Object.values(localStorage);
     if(!hasDrawnHours) {
         listAlarms()
         for (let i = 1; i <= 12; i++) {
@@ -40,15 +44,20 @@ function setTime() {
 
     hasDrawnHours = !hasDrawnHours;
     }
-    const hour = new Date().getHours();
-    const minute = new Date().getMinutes();
-    const second = new Date().getSeconds();
+    
     hourHand.style.transform = `rotate(${hour*30}deg)`;
     minuteHand.style.transform = `rotate(${minute*6}deg)`;
     secondHand.style.transform = `rotate(${second*6}deg)`;
     tikSound?.play();
-    if(hour === Number(alarmHour.value)&& minute === Number(alarmMinute.value)) {
-        playAlarm()
+
+    for(let i = 0; i < arrayOfAlarms.length; i++) { 
+        if(Number(arrayOfAlarms[i].split(",")[0]) === hour) {
+            console.log("got here")
+            if(Number(arrayOfAlarms[i].split(",")[1]) === minute) {
+                playAlarm()
+            }
+        }
+
     }
 }
 
@@ -67,11 +76,18 @@ function listAlarms() {
         alarmList.innerHTML += `
         
         <p class="alarm">${arrayOfAlarms[i].split(",")[0]}:${arrayOfAlarms[i].split(",")[1]}</p>
-        <span><button id="${arrayOfKeys[i]}" class="remove-alarm-btn">X</button></span>
+        <span><button id="${arrayOfKeys[i]}" class="remove-alarm-btn" onclick=removeAlarm(this)>X</button></span>
         
         `
     }
     
+
+}
+
+
+function removeAlarm(e) {
+    localStorage.removeItem(e.id);
+    listAlarms();
 }
 
 updateClock();
@@ -79,7 +95,7 @@ updateClock();
 setAlarmBtn.addEventListener("click", () => {
     const alarmHour = document.getElementById("alarm-hour");
     const alarmMinute = document.getElementById("alarm-minute");
-    localStorage.setItem('alarm-' + index, [alarmHour.value, alarmMinute.value])
+    localStorage.setItem('alarm-' + `${alarmHour.value}${alarmMinute.value}`, [alarmHour.value, alarmMinute.value])
     index += 1;
     listAlarms()
 })
@@ -90,6 +106,7 @@ clearAlarmBtn.addEventListener("click", () => {
     listAlarms()
 } )
 
+//Make This work instead of onclick!
 deleteAlarmBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
     console.log("clicked delete btn")
