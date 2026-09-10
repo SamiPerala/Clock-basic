@@ -29,10 +29,12 @@ async function playAlarm() {
 }
 function setTime() {
     let numberRot = 30;
-    const hour = new Date().getHours();
+    let hour = new Date().getHours();
     const minute = new Date().getMinutes();
     const second = new Date().getSeconds();
     let arrayOfAlarms = Object.values(localStorage);
+    hour = hour + (minute * 1.67) / 100;
+
     if(!hasDrawnHours) {
         listAlarms()
         for (let i = 1; i <= 12; i++) {
