@@ -10,12 +10,14 @@ const alarmList = document.getElementById("alarm-list");
 
 const setAlarmBtn = document.getElementById("set-alarm-btn");
 const clearAlarmBtn = document.getElementById("clear-alarm-btn");
+const stopAlarmBtn = document.getElementById("stop-alarm-toggle");
+
 let deleteAlarmBtns = document.querySelectorAll(".remove-alarm-btn");
 
 const tikSoundToggle = document.getElementById("tik-toggle");
 const alarmHour = document.getElementById("alarm-hour");
 const alarmMinute = document.getElementById("alarm-minute");
-const alarmSound = new Audio("./alarm.wav");
+let alarmSound = new Audio();
 let tikSound = new Audio();
 
 let hasDrawnHours = false;
@@ -23,7 +25,7 @@ let index = localStorage.length;
 
 
 async function playAlarm() {
-    return await alarmSound.play();
+    return await alarmSound?.play();
 }
 function setTime() {
     let numberRot = 30;
@@ -104,6 +106,14 @@ clearAlarmBtn.addEventListener("click", () => {
     localStorage.clear()
     index = 0;
     listAlarms()
+} )
+stopAlarmBtn.addEventListener("change", (e) => {
+ if(!e.target.checked) {
+        alarmSound = null;
+    } else if (e.target.checked) {
+        alarmSound = new Audio("./alarm.wav")
+    } 
+    
 } )
 
 //Make This work instead of onclick!
